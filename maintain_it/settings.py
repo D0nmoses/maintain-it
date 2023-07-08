@@ -39,6 +39,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 INSTALLED_APPS = [
     'devices',
     'bootstrap4',
+    'markupfield_helpers',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
