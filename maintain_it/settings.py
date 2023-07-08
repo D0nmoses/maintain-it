@@ -39,6 +39,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 INSTALLED_APPS = [
     'devices',
     'bootstrap4',
+    'markupfield_helpers',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -83,7 +84,7 @@ WSGI_APPLICATION = 'maintain_it.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # development
-if config('MODE')=="dev":
+if config('MODE')=='dev':
    DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -92,8 +93,7 @@ if config('MODE')=="dev":
            'PASSWORD': config('DB_PASSWORD'),
            'HOST': config('DB_HOST'),
            'PORT': '',
-       }
-       
+       }  
    }
 # production
 else:

@@ -27,7 +27,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('logout', views.LogoutView.as_view(), {"next_page": '/'}),
     path('admin/', admin.site.urls),
-    path('',include('main.urls')),
+    path('',include('devices.urls')),
     
     
 ]
