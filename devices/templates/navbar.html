@@ -1,0 +1,60 @@
+{% load bootstrap4 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block styles %}
+
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/navbar.css'%}">
+        <script src="https://use.fontawesome.com/80caa23151.js"></script>
+
+    {% endblock %}
+</head>
+<body>
+    {% if user.is_authenticated %}
+
+        <nav class="navbar navbar-inverse">
+
+
+            <div class="container-fluid">
+
+                <div class="container">
+
+                    <div class="navbar-header">
+
+                        <a href="{% url 'home' %}" class="navbar-brand siteIcon">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="{% url 'home'%}" class="navbar-brand siteName">Clonegram</a>
+
+                    </div>
+
+                    <div class="navbar-right">
+
+
+                        <a href="{% url 'profile' user.id%}" class="userIcon">
+                            <i class="fa fa-user"></i>
+                        </a>
+
+                        <a href="/logout" class="signOut">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+    {% endif %}
+</body>
+</html>
