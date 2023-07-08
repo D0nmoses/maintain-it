@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'maintain_it.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # development
-if config('MODE')=="dev":
+if config('MODE')=='dev':
    DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -92,8 +92,7 @@ if config('MODE')=="dev":
            'PASSWORD': config('DB_PASSWORD'),
            'HOST': config('DB_HOST'),
            'PORT': '',
-       }
-       
+       }  
    }
 # production
 else:
