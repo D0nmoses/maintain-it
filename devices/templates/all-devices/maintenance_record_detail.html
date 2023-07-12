@@ -146,7 +146,7 @@
             <h4>See also:</h4>
             <div class="list-group">
               {% for record in object.referenced_records.all %}
-                {% include "system_maintenance/_maintenance_record_list_item.html" %}
+                {% include "all-devices/maintenance_record_list_item.html" %}
               {% endfor %}
             </div>
           {% endif %}
@@ -155,7 +155,7 @@
             <h4>Referenced by:</h4>
             <div class="list-group">
               {% for record in object.referencing_records.all %}
-                {% include "system_maintenance/_maintenance_record_list_item.html" %}
+                {% include "all-devices/maintenance_record_list_item.html" %}
               {% endfor %}
             </div>
           {% endif %}
