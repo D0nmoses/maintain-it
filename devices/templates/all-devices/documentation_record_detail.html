@@ -1,0 +1,71 @@
+{% extends "all-devices/base.html" %}
+{% load project_home %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+  <div class='container'>
+
+    <ol class="breadcrumb">
+      {% project_home_breadcrumb_bs4 %}
+      <li class="breadcrumb-item" aria-label="breadcrumb" ><a href="{% url 'devices:home_view' %}">System Maintenance</a></li>
+      <li class="breadcrumb-item" aria-label="breadcrumb">Documentation Records</li>
+      <li class="breadcrumb-item active" aria-label="breadcrumb">{{ object }}</li>
+    </ol>
+
+    <a name='summary'></a>
+    <div class="jumbotron">
+      <h1>{{ object.title }}</h1>
+      <p><strong>Type:</strong> {{ object.maintenance_type }}</p>
+      <p><strong>Created:</strong> {{ object.created_at }}</p>
+      {% if object.created_at|date:'r' != object.updated_at|date:'r' %}
+        <p><strong>Updated:</strong> {{ object.updated_at }}</p>
+      {% endif %}
+
+      {% if object.documentation.raw %}
+        <a class="btn btn-info btn-lg full-width-on-mobile" href="#documentation" role="button">Documentation</a>
+      {% endif %}
+
+      {% include "all-devices/_related_records_button.html" with label="Maintenance Record" record_count=object.maintenance_records.count anchor="maintenance-records" singular_suffix="" plural_suffix="s" %}
+
+      {% if user.is_staff %}
+        <a class="btn btn-primary btn-lg full-width-on-mobile" href="{% url 'admin:system_maintenance_documentationrecord_change' object.id %}" target="_blank" role="button">
+          <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+        </a>
+      {% endif %}
+
+    </div>
+
+    {% if object.documentation.raw %}
+      {% with type_of_record='documentation' record_pk=object.pk type_of_field='documentation' markup_type=object.documentation.markup_type panel_type='info' content=object.documentation %}
+        {% include "all-devices/_panel.html" %}
+      {% endwith %}
+    {% endif %}
+
+    {% if object.maintenance_records.count %}
+      <a name='maintenance-records'></a>
+      <div class="panel panel-info">
+
+        <div class="panel-heading">
+          <h1 class="panel-title"><a href='#summary'>Related Maintenance Records</a></h1>
+        </div>
+
+        <div class="panel-body">
+
+          <div class="list-group">
+            {% for record in object.maintenance_records.all %}
+              {% include "all-devices/_maintenance_record_list_item.html" %}
+            {% endfor %}
+          </div>
+
+        </div>
+
+        <a href='#maintenance-records'>
+          <div class="panel-footer panel-info"></div>
+        </a>
+
+      </div>
+    {% endif %}
+
+  </div>
+{% endblock content %}

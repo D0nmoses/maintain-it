@@ -68,14 +68,25 @@ def home_view(request):
     }
     return render(request, 'all-devices/home.html', context)
 
-class MaintenanceRecordDetailView(SysAdminRequiredMixin, DetailView):
+class MaintenanceRecordDetailView(DetailView):
 
     model = MaintenanceRecord
     template_name = 'all-devices/maintenance_record_detail.html'
 
-class MaintenanceRecordListView(SysAdminRequiredMixin, ListView):
+class MaintenanceRecordListView(ListView):
 
     model = MaintenanceRecord
     paginate_by = SYSTEM_MAINTENANCE_PAGINATE_BY
-    template_name = 'system_maintenance/maintenance_record_list.html'
+    template_name = 'all-devices/maintenance_record_list.html'
 
+class DocumentationRecordDetailView(DetailView):
+
+    model = DocumentationRecord
+    template_name = 'all-devices/documentation_record_detail.html'
+
+
+class DocumentationRecordListView(ListView):
+
+    model = DocumentationRecord
+    paginate_by = SYSTEM_MAINTENANCE_PAGINATE_BY
+    template_name = 'all-devices/documentation_record_list.html'

@@ -1,0 +1,28 @@
+{% extends "all-devices/base.html" %}
+{% load project_home %}
+
+{% block title %}Documentation Records{% endblock %}
+
+{% block content %}
+  <div class='container'>
+
+    <ol class="breadcrumb">
+      {% project_home_breadcrumb_bs4 'documentation_records_label'%}
+      <li class="breadcrumb-item" aria-label="breadcrumb" ><a href="{% url 'devices:home_view' %}">System Maintenance</a></li>
+      <li class="breadcrumb-item active" aria-label="breadcrumb">Documentation Records</li>
+    </ol>
+
+    <div class="jumbotron">
+      <h1>Documentation Records</h1>
+    </div>
+
+    <div class="list-group">
+      {% for record in object_list %}
+        {% include "all-devices/_documentation_record_list_item.html" %}
+      {% endfor %}
+    </div>
+
+    {% include "all-devices/_pagination.html" %}
+
+  </div>
+{% endblock content %}
