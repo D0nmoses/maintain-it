@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'devices',
     'bootstrap4',
     'markupfield_helpers',
+    'project_home_tags',
+    'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -163,6 +165,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SYSTEM_MAINTENANCE_PAGINATE_BY = 50
+
+PROJECT_HOME_NAMESPACE = 'maintain_it:home'    # Namespace of homepage
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())

@@ -1,0 +1,35 @@
+{% extends "all-devices/base.html" %}
+{% load project_home %}
+
+{% block title %}Maintenance Records{% endblock %}
+
+{% block content %}
+  <div class='container'>
+
+    <ol class="breadcrumb">
+        {% project_home_breadcrumb_bs4 'maintenance_records_list_label'%}
+        <li class="breadcrumb-item" aria-label="breadcrumb" ><a href="{% url 'devices:home' %}">System Maintenance</a></li>
+        <li class="breadcrumb-item active" aria-label="breadcrumb">Maintenance Records</li>
+      </ol>
+
+
+    <div class="jumbotron">
+      <h1>Maintenance Records</h1>
+      <p>Background color indicates the status of the maintenance record:</p>
+      <ul>
+        <li>White: Complete</li>
+        <li>Yellow: In Progress</li>
+        <li>Red: Failed</li>
+      </ul>
+    </div>
+
+    <div class="list-group">
+      {% for record in object_list %}
+        {% include "all-devices/maintenance_record_list_item.html" %}
+      {% endfor %}
+    </div>
+
+    {% include "all-devices/pagination.html" %}
+
+  </div>
+{% endblock content %}

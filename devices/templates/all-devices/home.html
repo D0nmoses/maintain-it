@@ -1,11 +1,50 @@
-{% extends 'all-posts/base.html' %}
+{% extends 'all-devices/base.html' %}
 {% load bootstrap4 %]
 {% load static %}
+{% load project_home %}
 
 {% block styles%}
     {{block.super}}
     <link rel="stylesheet" href="{% static 'css/home.css'%}">
 {% endblock %}
-{% block content %}
 
-{% endblock %}
+{% block content %}
+  <div class="container">
+
+    {% project_home_url as project_home_url %}
+    {% if project_home_url %}
+      <ol class="breadcrumb">
+        {% project_home_breadcrumb_bs4 'Home_Label' %}   
+        <li class="breadcrumb-item" aria-label="breadcrumb"><a href="{% url 'app:home' %}">Home</a></li>
+          <li class=" breadcrumb-item active" aria-label="breadcrumb" aria-current="page">System Maintenance</li>
+      </ol>
+    {% endif %}
+
+    <div class="jumbotron">
+
+      <h1>System Maintenance</h1>
+      <p>System maintenance records and other important system administration information is accessible via the buttons below.</p>
+
+      {% if user.is_staff %}
+        <p>
+          To add or change system maintenance data, <span class="hide-on-mobile">click on the relevant <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> or</span> go to the <a href="{% url 'admin:app_list' 'devices' %}" target="_blank">System Maintenance Admin Page</a>.
+        </p>
+      {% endif %}
+
+      {% include "all-devices/summary_button.html" with label="Maintenance Record" btn_type="primary" list_count=maintenance_record_count list_url="devices:maintenance_record_list" singular_suffix="" plural_suffix="s" %}
+
+      {% include "all-devices/summary_button.html" with label="Documentation Record" btn_type="primary" list_count=documentation_record_count list_url="devices:documentation_record_list" singular_suffix="" plural_suffix="s" %}
+
+      {% include "all-devices/summary_button.html" with label="Hardware Type" btn_type="info" list_count=hardware_count list_url="" singular_suffix="" plural_suffix="s" %}
+
+      {% include "all-devices/summary_button.html" with label="Maintenance Type" btn_type="info" list_count=maintenance_type_count list_url="" singular_suffix="" plural_suffix="s" %}
+
+      {% include "all-devices/summary_button.html" with label="Software Package" btn_type="info" list_count=software_count list_url=""  singular_suffix="" plural_suffix="s" %}
+
+      {% include "all-devices/summary_button.html" with label="System" btn_type="info" list_count=system_count list_url="" singular_suffix="" plural_suffix="s" %}
+
+      {% include "all-devices/summary_button.html" with label="System Administrator" btn_type="info" list_count=sys_admin_count list_url="" singular_suffix="" plural_suffix="s" %}
+
+    </div>
+  </div>
+{% endblock content %}
