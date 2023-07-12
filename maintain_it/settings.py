@@ -167,7 +167,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SYSTEM_MAINTENANCE_PAGINATE_BY = 50
 
-PROJECT_HOME_NAMESPACE = 'maintain_it:index_view'    # Namespace of homepage
+PROJECT_HOME_NAMESPACE = 'maintain_it:home'    # Namespace of homepage
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())

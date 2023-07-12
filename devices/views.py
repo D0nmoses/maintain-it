@@ -50,7 +50,7 @@ class SysAdminRequiredMixin(object):
     
 
 @login_required(login_url='/accounts/login/')
-@user_passes_test(sysadmin_check)
+# @user_passes_test(sysadmin_check)
 def home_view(request):
     '''
     View function to display the home page
@@ -66,5 +66,4 @@ def home_view(request):
         'sys_admin_count': SysAdmin.objects.all().count(),
         'system_count': System.objects.all().count(),
     }
-    return render(
-        request, 'all-devices/home.html', context)
+    return render(request, 'all-devices/home.html', context)
