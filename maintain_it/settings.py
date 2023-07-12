@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'markupfield_helpers',
     'project_home_tags',
+    'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

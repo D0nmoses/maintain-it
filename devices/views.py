@@ -67,3 +67,15 @@ def home_view(request):
         'system_count': System.objects.all().count(),
     }
     return render(request, 'all-devices/home.html', context)
+
+class MaintenanceRecordDetailView(SysAdminRequiredMixin, DetailView):
+
+    model = MaintenanceRecord
+    template_name = 'all-devices/maintenance_record_detail.html'
+
+class MaintenanceRecordListView(SysAdminRequiredMixin, ListView):
+
+    model = MaintenanceRecord
+    paginate_by = SYSTEM_MAINTENANCE_PAGINATE_BY
+    template_name = 'system_maintenance/maintenance_record_list.html'
+

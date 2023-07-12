@@ -3,9 +3,13 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+
 urlpatterns=[
     path('', views.home_view, name='home'),
     re_path(r'^profile/(\d+)', views.profile, name="profile"),
+    path('records/', views.MaintenanceRecordListView.as_view(), name='maintenance_record_list'),
+    path('records/<int:pk>/', views.MaintenanceRecordDetailView.as_view(), name='maintenance_record_detail'),
 ]
 
 if settings.DEBUG:
