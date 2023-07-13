@@ -12,6 +12,9 @@ A Django-based web application for preventive maintenance scheduling and trackin
 - Procfile for running gunicorn with New Relic's Python agent.
 - PostgreSQL database support with psycopg2.
 
+## Codebeat Grade
+[![codebeat badge](https://codebeat.co/badges/f96af2e8-627b-4554-877d-602825430d9e)](https://codebeat.co/projects/github-com-d0nmoses-maintain-it-main)
+
 ## Environment Variables
 ```SECRET_KEY=XXX
 DEBUG=True
