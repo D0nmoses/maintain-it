@@ -7,7 +7,7 @@
   <div class='container'>
 
     <ol class="breadcrumb">
-      {% project_home_breadcrumb_bs4 '' %}
+      {% project_home_breadcrumb_bs4 ' '%}
       <li class='breadcrumb-item' aria-label="breadcrumb"><a href="{% url 'devices:home' %}">Home</a></li>
       <li class='breadcrumb-item' aria-label="breadcrumb"><a href="{% url 'devices:maintenance_record_list' %}">Maintenance Records</a></li>
       <li class="breadcrumb-tiem active" aria-label="breadcrumb">{{ object }}</li>
@@ -62,29 +62,25 @@
 
       {% include "all-devices/related_records_button.html" with label="Related Record" record_count=object.referenced_records.count|add:object.referencing_records.count anchor="related-records" singular_suffix="" plural_suffix="s" %}
 
-      {% if user.is_staff %}
-        <a class="btn btn-primary btn-lg full-width-on-mobile" href="{% url 'admin:system_maintenance_maintenancerecord_change' object.id %}" target="_blank" role="button">
-          <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-        </a>
-      {% endif %}
+      
 
     </div>
 
     {% if object.description.raw %}
       {% with type_of_record='maintenance' record_pk=object.pk type_of_field='description' markup_type=object.description.markup_type panel_type='info' content=object.description %}
-        {% include "system_maintenance/_panel.html" %}
+        {% include "all-devices/panel.html" %}
       {% endwith %}
     {% endif %}
 
     {% if object.procedure.raw %}
       {% with type_of_record='maintenance' record_pk=object.pk type_of_field='procedure' markup_type=object.procedure.markup_type panel_type='success' content=object.procedure %}
-        {% include "system_maintenance/_panel.html" %}
+        {% include "all-devices/panel.html" %}
       {% endwith %}
     {% endif %}
 
     {% if object.problems.raw %}
       {% with type_of_record='maintenance' record_pk=object.pk type_of_field='problems' markup_type=object.problems.markup_type panel_type='danger' content=object.problems %}
-        {% include "system_maintenance/_panel.html" %}
+        {% include "all-devices/panel.html" %}
       {% endwith %}
     {% endif %}
 

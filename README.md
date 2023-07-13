@@ -3,7 +3,7 @@ A Django-based web application for preventive maintenance scheduling and trackin
 
 ## Features
 
-- Django 2.0+
+- Django 4.0+
 - Uses [Pip](https://github.com/pypa/pip) - the officially recommended Python packaging tool from Python.org.
 - Development, Staging and Production settings with [django-configurations](https://django-configurations.readthedocs.org).
 - Get value insight and debug information while on Development with [django-debug-toolbar](https://django-debug-toolbar.readthedocs.org).
@@ -43,7 +43,7 @@ Password: admin
 
 ## Built With
 
-* [Django](https://docs.djangoproject.com/en/3.0/) - The web framework used
+* [Django](https://docs.djangoproject.com/en/4.0/) - The web framework used
 * [Pip](https://github.com/pypa/pip) - Dependency Management
 
 ## Versioning

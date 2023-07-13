@@ -7,8 +7,8 @@
   <div class='container'>
 
     <ol class="breadcrumb">
-      {% project_home_breadcrumb_bs4 %}
-      <li class="breadcrumb-item" aria-label="breadcrumb" ><a href="{% url 'devices:home_view' %}">System Maintenance</a></li>
+      {% project_home_breadcrumb_bs4 ' '%}
+      <li class="breadcrumb-item" aria-label="breadcrumb" ><a href="{% url 'devices:home' %}">System Maintenance</a></li>
       <li class="breadcrumb-item" aria-label="breadcrumb">Documentation Records</li>
       <li class="breadcrumb-item active" aria-label="breadcrumb">{{ object }}</li>
     </ol>
@@ -26,19 +26,13 @@
         <a class="btn btn-info btn-lg full-width-on-mobile" href="#documentation" role="button">Documentation</a>
       {% endif %}
 
-      {% include "all-devices/_related_records_button.html" with label="Maintenance Record" record_count=object.maintenance_records.count anchor="maintenance-records" singular_suffix="" plural_suffix="s" %}
-
-      {% if user.is_staff %}
-        <a class="btn btn-primary btn-lg full-width-on-mobile" href="{% url 'admin:system_maintenance_documentationrecord_change' object.id %}" target="_blank" role="button">
-          <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-        </a>
-      {% endif %}
+      {% include "all-devices/related_records_button.html" with label="Maintenance Record" record_count=object.maintenance_records.count anchor="maintenance-records" singular_suffix="" plural_suffix="s" %}
 
     </div>
 
     {% if object.documentation.raw %}
       {% with type_of_record='documentation' record_pk=object.pk type_of_field='documentation' markup_type=object.documentation.markup_type panel_type='info' content=object.documentation %}
-        {% include "all-devices/_panel.html" %}
+        {% include "all-devices/panel.html" %}
       {% endwith %}
     {% endif %}
 
