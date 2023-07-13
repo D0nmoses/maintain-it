@@ -7,7 +7,7 @@
   <div class='container'>
 
     <ol class="breadcrumb">
-      {% project_home_breadcrumb_bs4 'documentation_records_label'%}
+      {% project_home_breadcrumb_bs4 ' '%}
       <li class="breadcrumb-item" aria-label="breadcrumb" ><a href="{% url 'devices:home' %}">System Maintenance</a></li>
       <li class="breadcrumb-item active" aria-label="breadcrumb">Documentation Records</li>
     </ol>
@@ -18,11 +18,11 @@
 
     <div class="list-group">
       {% for record in object_list %}
-        {% include "all-devices/_documentation_record_list_item.html" %}
+        {% include "all-devices/documentation_list_record_item.html" %}
       {% endfor %}
     </div>
 
-    {% include "all-devices/_pagination.html" %}
+    {% include "all-devices/pagination.html" %}
 
   </div>
 {% endblock content %}
